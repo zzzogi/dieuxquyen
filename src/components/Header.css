@@ -1,0 +1,133 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 20px 0;
+  transition: all 0.3s ease;
+  background: transparent;
+}
+
+.header.scrolled {
+  background: rgba(142, 15, 65, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  padding: 15px 0;
+}
+
+.header-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-icon {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: white;
+  padding: 8px 12px;
+  border-radius: 12px;
+  font-weight: 900;
+  font-size: 20px;
+}
+
+.logo-icon span:first-child {
+  color: var(--bin-primary);
+}
+
+.heart-symbol {
+  color: var(--dieu-primary);
+  font-size: 18px;
+}
+
+.logo-icon span:last-child {
+  color: var(--dieu-primary);
+}
+
+.logo-text {
+  font-size: 24px;
+  font-weight: 900;
+  color: white;
+  letter-spacing: 1px;
+}
+
+.nav {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+
+.nav button {
+  background: none;
+  border: none;
+  font-size: 16px;
+  color: white;
+  cursor: pointer;
+  position: relative;
+  padding: 8px 0;
+  transition: all 0.3s ease;
+  font-weight: 600;
+}
+
+.nav button::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: white;
+  transition: width 0.3s ease;
+  border-radius: 2px;
+}
+
+.nav button:hover::after {
+  width: 100%;
+}
+
+.nav button:hover {
+  opacity: 0.8;
+}
+
+.header-buttons {
+  display: flex;
+  gap: 15px;
+}
+
+.btn-login {
+  background: white;
+  color: #8e0f41;
+  border: none;
+  padding: 12px 32px;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-login:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.3);
+}
+
+@media (max-width: 968px) {
+  .nav {
+    display: none;
+  }
+
+  .header-content {
+    padding: 0 30px;
+  }
+}

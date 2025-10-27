@@ -1,0 +1,616 @@
+.about-section {
+  background: linear-gradient(180deg, #ffe8ec 0%, #fff5f7 100%);
+  padding: 0;
+  overflow: hidden;
+}
+
+/* ========== DIEU SECTION - MAGAZINE EDITORIAL ========== */
+.about-dieu-section {
+  padding: 100px 60px 120px;
+  background: #fafafa;
+}
+
+.dieu-magazine-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+.dieu-magazine-container.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Magazine Header with small photo */
+.dieu-mag-header {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 40px;
+  margin-bottom: 60px;
+  align-items: center;
+}
+
+.dieu-small-photo {
+  width: 180px;
+  height: 180px;
+  background: #ddd;
+  position: relative;
+  overflow: hidden;
+  border: 4px solid black;
+}
+
+.dieu-small-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.dieu-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--dieu-secondary) 0%, #fff 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.dieu-emoji {
+  font-size: 48px;
+}
+
+.dieu-placeholder p {
+  font-size: 14px;
+  color: var(--dieu-primary);
+  font-weight: 600;
+}
+
+/* Hide placeholder when image loaded */
+.dieu-small-photo:has(img[src]:not([src=""]):not([src^="/path/to/"]))
+  .dieu-placeholder,
+.dieu-photo-main:has(img[src]:not([src=""]):not([src^="/path/to/"]))
+  .dieu-placeholder,
+.dieu-photo-top-right:has(img[src]:not([src=""]):not([src^="/path/to/"]))
+  .dieu-placeholder,
+.dieu-photo-bottom-left:has(img[src]:not([src=""]):not([src^="/path/to/"]))
+  .dieu-placeholder,
+.dieu-photo-bottom-right:has(img[src]:not([src=""]):not([src^="/path/to/"]))
+  .dieu-placeholder {
+  display: none;
+}
+
+.dieu-small-photo img[src=""],
+.dieu-small-photo img[src^="/path/to/"],
+.dieu-photo-main img[src=""],
+.dieu-photo-main img[src^="/path/to/"],
+.dieu-photo-top-right img[src=""],
+.dieu-photo-top-right img[src^="/path/to/"],
+.dieu-photo-bottom-left img[src=""],
+.dieu-photo-bottom-left img[src^="/path/to/"],
+.dieu-photo-bottom-right img[src=""],
+.dieu-photo-bottom-right img[src^="/path/to/"] {
+  display: none;
+}
+
+/* Magazine Title */
+.dieu-mag-title-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.dieu-mag-title {
+  font-size: 100px;
+  font-weight: 900;
+  line-height: 0.9;
+  color: black;
+  text-transform: uppercase;
+  letter-spacing: -2px;
+}
+
+.title-part-1,
+.title-part-2 {
+  display: block;
+}
+
+.title-part-2 {
+  font-style: italic;
+  color: #333;
+}
+
+/* Magazine Grid Layout */
+.dieu-mag-grid {
+  display: grid;
+  grid-template-columns: 1fr 0.5fr 0.5fr;
+  gap: 30px;
+  margin-bottom: 60px;
+}
+
+/* Main large photo - spans 2 rows */
+.dieu-photo-main {
+  grid-column: 1;
+  grid-row: 1 / 3;
+  height: 700px;
+  background: #ddd;
+  position: relative;
+  overflow: hidden;
+}
+
+.dieu-photo-main img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.dieu-placeholder.main .dieu-emoji {
+  font-size: 80px;
+}
+
+/* Top right photo */
+.dieu-photo-top-right {
+  grid-column: 2 / 4;
+  grid-row: 1;
+  height: 450px;
+  background: #ddd;
+  position: relative;
+  overflow: hidden;
+}
+
+.dieu-photo-top-right img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Bottom section - 2 photos side by side */
+.dieu-photo-bottom-left {
+  grid-column: 2;
+  grid-row: 2;
+  height: 220px;
+  background: #ddd;
+  position: relative;
+  overflow: hidden;
+}
+
+.dieu-photo-bottom-right {
+  grid-column: 3;
+  grid-row: 2;
+  height: 220px;
+  background: #ddd;
+  position: relative;
+  overflow: hidden;
+}
+
+.dieu-photo-bottom-left img,
+.dieu-photo-bottom-right img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.dieu-placeholder.medium .dieu-emoji {
+  font-size: 56px;
+}
+
+/* NEW - Magazine Style Info Box */
+.dieu-info-box {
+  background: transparent;
+  padding: 0;
+  margin-top: 80px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+}
+
+.dieu-info-header {
+  grid-column: 1 / 3;
+  margin-bottom: 40px;
+  padding-bottom: 30px;
+  border-bottom: 3px solid black;
+}
+
+.dieu-name-title {
+  font-size: 72px;
+  font-weight: 900;
+  color: black;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: -2px;
+  font-style: italic;
+}
+
+.dieu-birth-date {
+  font-size: 16px;
+  color: #666;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.dieu-description {
+  grid-column: 1 / 3;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 50px;
+}
+
+.dieu-trait-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.info-label {
+  font-size: 11px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: black;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--dieu-primary);
+}
+
+.dieu-description p:not(.info-label) {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #333;
+  margin: 0;
+}
+
+/* Magazine Footer */
+.dieu-mag-footer {
+  text-align: right;
+  padding: 60px 0 40px;
+  border-top: 1px solid #ddd;
+  margin-top: 60px;
+}
+
+.mag-tagline {
+  font-size: 20px;
+  font-style: italic;
+  color: var(--dieu-primary);
+  font-family: "Caveat", cursive;
+  font-weight: 600;
+}
+
+/* ========== HEART DIVIDER ========== */
+.heart-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 40px;
+  background: transparent;
+}
+
+.heart-line {
+  flex: 1;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--dieu-primary),
+    transparent
+  );
+  max-width: 400px;
+}
+
+.heart-icon-wrapper {
+  margin: 0 30px;
+  position: relative;
+}
+
+.heart-icon {
+  font-size: 72px;
+  display: block;
+  animation: heartbeat 1.5s infinite;
+  filter: drop-shadow(0 5px 15px rgba(160, 0, 64, 0.3));
+}
+
+@keyframes heartbeat {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  10%,
+  30% {
+    transform: scale(1.1);
+  }
+  20%,
+  40% {
+    transform: scale(1);
+  }
+}
+
+/* ========== BIN SECTION - FASHION EDITORIAL (COLORED) ========== */
+.about-bin-section {
+  padding: 120px 40px;
+  background: #f5f5f5;
+}
+
+.bin-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+.bin-container.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.bin-title-section {
+  margin-bottom: 60px;
+}
+
+.bin-large-title {
+  font-size: 120px;
+  font-weight: 900;
+  line-height: 1;
+  color: var(--bin-primary);
+  text-transform: uppercase;
+  letter-spacing: -3px;
+}
+
+.fashion-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+  position: relative;
+}
+
+/* UPDATED - Remove grayscale, keep colors */
+.fashion-main-image {
+  width: 100%;
+  height: 700px;
+  background: #ddd;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  border: 5px solid white;
+}
+
+.fashion-main-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.fashion-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    var(--bin-secondary) 0%,
+    var(--bin-tertiary) 100%
+  );
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.fashion-emoji {
+  font-size: 80px;
+}
+
+.fashion-placeholder p {
+  font-size: 18px;
+  color: var(--bin-primary);
+  font-weight: 700;
+}
+
+.fashion-main-image:has(img[src]:not([src=""]):not([src^="/path/to/"]))
+  .fashion-placeholder,
+.fashion-small-image:has(img[src]:not([src=""]):not([src^="/path/to/"]))
+  .fashion-placeholder,
+.fashion-overlay-image:has(img[src]:not([src=""]):not([src^="/path/to/"]))
+  .fashion-placeholder {
+  display: none;
+}
+
+.fashion-main-image img[src=""],
+.fashion-main-image img[src^="/path/to/"],
+.fashion-small-image img[src=""],
+.fashion-small-image img[src^="/path/to/"],
+.fashion-overlay-image img[src=""],
+.fashion-overlay-image img[src^="/path/to/"] {
+  display: none;
+}
+
+.fashion-right {
+  position: relative;
+  padding-top: 100px;
+}
+
+/* UPDATED - Colored photos */
+.fashion-small-image {
+  width: 350px;
+  height: 450px;
+  background: #ddd;
+  margin-bottom: 40px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.25);
+  border: 5px solid white;
+}
+
+.fashion-small-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.bin-info-section {
+  background: white;
+  padding: 40px;
+  margin-bottom: 40px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  border-left: 5px solid var(--bin-primary);
+}
+
+.bin-subtitle {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: var(--bin-primary);
+  margin-bottom: 30px;
+  text-transform: uppercase;
+}
+
+.bin-detail h3 {
+  font-size: 36px;
+  font-weight: 900;
+  color: var(--bin-primary);
+  margin-bottom: 10px;
+}
+
+.bin-birthday {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.bin-traits {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.trait-item strong {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--bin-primary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.trait-item p {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* UPDATED - Colored overlay image */
+.fashion-overlay-image {
+  width: 280px;
+  height: 350px;
+  background: #ddd;
+  position: absolute;
+  right: -60px;
+  bottom: 100px;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.25);
+  z-index: 10;
+  overflow: hidden;
+  border: 5px solid white;
+}
+
+.fashion-overlay-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .dieu-mag-title {
+    font-size: 72px;
+  }
+
+  .dieu-name-title {
+    font-size: 56px;
+  }
+
+  .dieu-description {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .bin-large-title {
+    font-size: 80px;
+  }
+
+  .fashion-layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .fashion-overlay-image {
+    right: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .dieu-mag-header {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .dieu-mag-title {
+    font-size: 48px;
+  }
+
+  .dieu-name-title {
+    font-size: 40px;
+  }
+
+  .dieu-mag-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+
+  .dieu-photo-main,
+  .dieu-photo-top-right,
+  .dieu-photo-bottom-left,
+  .dieu-photo-bottom-right {
+    grid-column: 1;
+    grid-row: auto;
+    height: 400px;
+  }
+
+  .dieu-info-box {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .dieu-info-header {
+    grid-column: 1;
+  }
+
+  .dieu-description {
+    grid-column: 1;
+  }
+
+  .bin-large-title {
+    font-size: 48px;
+  }
+
+  .fashion-main-image {
+    height: 500px;
+  }
+
+  .fashion-small-image {
+    width: 100%;
+  }
+
+  .fashion-overlay-image {
+    position: static;
+    width: 100%;
+    margin-top: 20px;
+  }
+}
