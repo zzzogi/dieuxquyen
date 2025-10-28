@@ -32,7 +32,7 @@ const Memories = () => {
       date: "27/05/2024",
       description: "Ngày chúng mình bắt đầu câu chuyện tình yêu đẹp đẽ này 💕",
       rotation: -8,
-      defaultPosition: { x: 100, y: 150 },
+      defaultPosition: { x: 100, y: 80 },
     },
     {
       id: 2,
@@ -41,7 +41,7 @@ const Memories = () => {
       date: "15/06/2024",
       description: "Kỷ niệm khó quên về chuyến đi đầu tiên cùng nhau 🏖️",
       rotation: 5,
-      defaultPosition: { x: 450, y: 250 },
+      defaultPosition: { x: 350, y: 200 },
     },
     {
       id: 3,
@@ -50,7 +50,7 @@ const Memories = () => {
       date: "20/07/2024",
       description: "Sinh nhật đầu tiên bên nhau thật ngọt ngào 🎂",
       rotation: -4,
-      defaultPosition: { x: 800, y: 200 },
+      defaultPosition: { x: 600, y: 130 },
     },
     {
       id: 4,
@@ -59,7 +59,7 @@ const Memories = () => {
       date: "14/08/2024",
       description: "Bữa tối dưới ánh nến ấm áp và lãng mạn 🕯️",
       rotation: 6,
-      defaultPosition: { x: 250, y: 550 },
+      defaultPosition: { x: 850, y: 300 },
     },
     {
       id: 5,
@@ -68,7 +68,7 @@ const Memories = () => {
       date: "10/09/2024",
       description: "Ngày picnic vui vẻ trong công viên 🌳",
       rotation: -7,
-      defaultPosition: { x: 650, y: 600 },
+      defaultPosition: { x: 400, y: 400 },
     },
   ];
 
@@ -218,6 +218,9 @@ const Memories = () => {
             </div>
             <div className="polaroid-caption">
               <p className="handwriting">{memory.title}</p>
+              {!isMobile && (
+                <p className="tap-hint handwriting">{memory.description}</p>
+              )}
             </div>
           </div>
         </div>
@@ -303,16 +306,18 @@ const Memories = () => {
           </div>
         )}
 
-        <div className="celebration-section">
-          <p className="celebration-hint">💕 Yêu nhau thật nhiều! 💕</p>
-          <button
-            className="heart-explosion-btn"
-            onClick={triggerHeartExplosion}
-          >
-            <span className="btn-heart">💖</span>
-            <span className="btn-text">Tình yêu nở rộ!</span>
-          </button>
-        </div>
+        {isMobile && (
+          <div className="celebration-section">
+            <p className="celebration-hint">💕 Yêu nhau thật nhiều! 💕</p>
+            <button
+              className="heart-explosion-btn"
+              onClick={triggerHeartExplosion}
+            >
+              <span className="btn-heart">💖</span>
+              <span className="btn-text">Tình yêu nở rộ!</span>
+            </button>
+          </div>
+        )}
       </div>
 
       {/* Lightbox Modal */}

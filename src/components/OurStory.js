@@ -1,76 +1,122 @@
-import React from "react";
-import { useInView } from "react-intersection-observer";
+import React, { useState } from "react";
 import "./OurStory.css";
 
-const OurStory = () => {
-  const { ref, inView } = useInView({
-    threshold: 0.2,
-    triggerOnce: true,
-  });
+const storyItems = [
+  {
+    id: 1,
+    icon: "🎖️",
+    title: "Ngày nhập ngũ",
+    media: "/assets/images/story/img/story-2.jpg",
+    type: "image",
+  },
+  {
+    id: 2,
+    icon: "💪",
+    title: "Giai đoạn khó khăn",
+    media: "/img/challenge.jpg",
+    type: "image",
+  },
+  {
+    id: 3,
+    icon: "👼",
+    title: "Ngày em đến",
+    media: "/img/angel.jpg",
+    type: "image",
+  },
+  {
+    id: 4,
+    icon: "☕",
+    title: "Tìm hiểu",
+    media: "/assets/images/story/vid/video-2.mov",
+    type: "video",
+  },
+  {
+    id: 5,
+    icon: "💖",
+    title: "Lời tỏ tình",
+    media: "/img/confession.jpg",
+    type: "image",
+    special: true,
+  },
+  {
+    id: 6,
+    icon: "✨",
+    title: "Viết tiếp câu chuyện",
+    media: "/img/future.jpg",
+    type: "image",
+  },
+];
 
-  const timelineEvents = [
-    {
-      icon: "👋",
-      title: "Lần đầu gặp gỡ",
-      date: "Tháng XX/20XX",
-      description:
-        "Ngày đầu tiên chúng mình gặp nhau, mọi thứ bắt đầu từ đây...",
-      side: "left",
-    },
-    {
-      icon: "💕",
-      title: "Bắt đầu yêu",
-      date: "Tháng XX/20XX",
-      description: "Cảm xúc nảy nở, chúng mình đã chính thức bên nhau!",
-      side: "right",
-    },
-    {
-      icon: "🎉",
-      title: "Kỷ niệm đặc biệt",
-      date: "Tháng XX/20XX",
-      description: "Một ngày đáng nhớ mà chúng mình sẽ không bao giờ quên...",
-      side: "left",
-    },
-    {
-      icon: "✨",
-      title: "Hiện tại",
-      date: "Hôm nay",
-      description: "Mỗi ngày bên nhau là một món quà quý giá!",
-      side: "right",
-    },
-  ];
+export default function OurStory() {
+  const [selectedItem, setSelectedItem] = useState(storyItems[0]);
+
+  const handleItemClick = (item) => {
+    setSelectedItem(item);
+  };
 
   return (
-    <section id="story" className="story-section" ref={ref}>
-      <div className="story-content">
-        <h2 className={`section-title ${inView ? "animate" : ""}`}>
-          Câu chuyện của chúng mình 📖
-        </h2>
+    <section className="ourstory-section">
+      {/* Background Decorations */}
+      <div className="story-bg-decorations">
+        <span className="floating-element heart-1">💕</span>
+        <span className="floating-element heart-2">💖</span>
+        <span className="floating-element heart-3">💗</span>
+        <span className="floating-element star-1">⭐</span>
+        <span className="floating-element star-2">✨</span>
+        <span className="floating-element star-3">🌟</span>
+        <span className="floating-element flower-1">🌸</span>
+        <span className="floating-element flower-2">🌺</span>
+        <div className="bg-circle circle-1"></div>
+        <div className="bg-circle circle-2"></div>
+        <div className="bg-circle circle-3"></div>
+      </div>
 
-        <div className={`timeline ${inView ? "animate" : ""}`}>
-          <div className="timeline-line"></div>
+      <div className="story-container">
+        <h2 className="story-main-title">Câu chuyện của chúng tôi</h2>
 
-          {timelineEvents.map((event, index) => (
-            <div
-              key={index}
-              className={`timeline-item ${event.side} ${
-                inView ? "animate" : ""
-              }`}
-              style={{ animationDelay: `${index * 0.2}s` }}
-            >
-              <div className="timeline-content">
-                <div className="event-icon">{event.icon}</div>
-                <h3>{event.title}</h3>
-                <span className="event-date">{event.date}</span>
-                <p>{event.description}</p>
+        <div className="story-content">
+          {/* Left Menu */}
+          <div className="story-menu">
+            {storyItems.map((item) => (
+              <div
+                key={item.id}
+                className={`menu-item ${
+                  selectedItem.id === item.id ? "active" : ""
+                }`}
+                onClick={() => handleItemClick(item)}
+              >
+                <span className="menu-icon">{item.icon}</span>
+                <span className="menu-title">{item.title}</span>
               </div>
-              <div className="timeline-dot"></div>
-            </div>
-          ))}
+            ))}
+          </div>
+
+          {/* Right Display Area */}
+          <div className="story-display">
+            {selectedItem.type === "image" ? (
+              <div className="display-image-wrapper" key={selectedItem.id}>
+                <img
+                  src={selectedItem.media}
+                  alt={selectedItem.title}
+                  className="display-image"
+                />
+                <div className="display-placeholder">
+                  <span className="placeholder-emoji">📷</span>
+                  <p>{selectedItem.title}</p>
+                </div>
+              </div>
+            ) : (
+              <div className="display-video-wrapper" key={selectedItem.id}>
+                <video
+                  src={selectedItem.media}
+                  controls
+                  className="display-video"
+                />
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </section>
   );
-};
-
-export default OurStory;
+}
