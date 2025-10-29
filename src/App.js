@@ -5,8 +5,8 @@ import Hero from "./components/Hero";
 import AboutUs from "./components/AboutUs";
 import OurStory from "./components/OurStory";
 import Memories from "./components/Memories";
+import FoodGallery from "./components/FoodGallery";
 import Testimonials from "./components/Testimonials";
-import Gallery from "./components/Gallery";
 import Footer from "./components/Footer";
 
 function App() {
@@ -17,8 +17,8 @@ function App() {
       <AboutUs />
       <OurStory />
       <Memories />
+      <FoodGallery />
       <Testimonials />
-      <Gallery />
       <Footer />
     </div>
   );
