@@ -1,13 +1,12 @@
-import React from "react";
 import "./App.css";
+import AboutUs from "./components/AboutUs";
+import FoodGallery from "./components/FoodGallery";
+import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
-import AboutUs from "./components/AboutUs";
-import OurStory from "./components/OurStory";
 import Memories from "./components/Memories";
-import FoodGallery from "./components/FoodGallery";
+import OurStory from "./components/OurStory";
 import Testimonials from "./components/Testimonials";
-import Footer from "./components/Footer";
 
 function App() {
   return (

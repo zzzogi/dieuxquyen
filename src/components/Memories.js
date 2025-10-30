@@ -218,9 +218,9 @@ const Memories = () => {
             </div>
             <div className="polaroid-caption">
               <p className="handwriting">{memory.title}</p>
-              {!isMobile && (
+              {/* {!isMobile && (
                 <p className="tap-hint handwriting">{memory.description}</p>
-              )}
+              )} */}
             </div>
           </div>
         </div>

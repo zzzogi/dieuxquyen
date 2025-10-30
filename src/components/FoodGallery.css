@@ -72,12 +72,10 @@
 
 .food-title {
   text-align: center;
-  font-size: 60px;
-  font-weight: 900;
+  font-size: 108px;
   color: var(--dieu-primary);
-  margin-bottom: 60px;
-  font-family: "Caveat", cursive;
-  text-shadow: 0 3px 15px rgba(160, 0, 64, 0.15);
+  margin-bottom: 14px;
+  font-family: "VN Handwriting 3", cursive;
 }
 
 /* ========== COMPACT MARQUEE (SINGLE ROW) ========== */
@@ -269,6 +267,7 @@
 }
 
 .cute-arrow {
+  max-width: 128px;
   animation: arrowBounce 2s ease-in-out infinite;
 }
 

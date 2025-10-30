@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./OurStory.css";
 
 const storyItems = [
   {
     id: 1,
     title: "Ngày nhập ngũ",
-    description: "Quyền lên đường nhập ngũ - Khởi đầu hành trình mới",
+    description: "Quyền lên đường đi lính - Khởi đầu hành trình mới",
     media: "/assets/images/story/img/img-1.jpg",
     type: "image",
   },
@@ -123,7 +123,7 @@ export default function OurStory() {
       </div>
 
       <div className="story-container-centered">
-        <h2 className="story-title">Câu chuyện của chúng tôi</h2>
+        <h2 className="story-title">Câu chuyện của chúng mình</h2>
 
         {/* Carousel Container */}
         <div className="vertical-carousel-wrapper">

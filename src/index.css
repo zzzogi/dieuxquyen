@@ -1,5 +1,39 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
 
+@font-face {
+  font-family: "VN Handwriting";
+  src: local("VN Handwriting"),
+    url("./fonts/MJ-Maritime-Wonderine.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "VN Handwriting 2";
+  src: local("VN Handwriting 2"),
+    url("./fonts/SVN-Brunette.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "VN Handwriting 3";
+  src: local("VN Handwriting 3"),
+    url("./fonts/MJ-HolidayMaria-Regular-1.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "VN Handwriting 4";
+  src: local("VN Handwriting 4"),
+    url("./fonts/arialroundedmtbold.ttf") format("truetype");
+  font-weight: lighter;
+  font-style: normal;
+}
+
+/* arialroundedmtbold */
+
 * {
   margin: 0;
   padding: 0;

@@ -165,13 +165,13 @@
 }
 
 .polaroid-caption .handwriting {
-  font-size: 18px;
+  font-size: 32px;
   color: #333;
   margin: 0;
 }
 
 .handwriting {
-  font-family: "Caveat", "Patrick Hand", "Indie Flower", cursive;
+  font-family: "VN Handwriting 3", "Patrick Hand", "Indie Flower", cursive;
 }
 
 /* Background Decorative Elements */
@@ -421,7 +421,7 @@
 }
 
 .btn-text {
-  font-family: "Caveat", cursive;
+  /* font-family: "VN Handwriting", cursive; */
   font-size: 24px;
 }
 

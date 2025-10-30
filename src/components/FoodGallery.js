@@ -1,63 +1,7 @@
 import React from "react";
 import "./FoodGallery.css";
 
-// Food stickers cho marquee (shorter lists)
-const marquee1Items = [
-  "🍕",
-  "🍔",
-  "🍟",
-  "🌭",
-  "🍿",
-  "🥓",
-  "🥚",
-  "🍳",
-  "🧇",
-  "🥞",
-  "🧈",
-  "🍞",
-  "🥐",
-  "🥖",
-  "🥨",
-  "🥯",
-];
-const marquee2Items = [
-  "🧀",
-  "🥗",
-  "🥙",
-  "🥪",
-  "🌮",
-  "🌯",
-  "🥘",
-  "🍝",
-  "🍜",
-  "🍲",
-  "🍛",
-  "🍣",
-  "🍱",
-  "🥟",
-  "🍤",
-  "🍙",
-];
-const marquee3Items = [
-  "🥧",
-  "🍰",
-  "🎂",
-  "🍮",
-  "🍭",
-  "🍬",
-  "🍫",
-  "🍩",
-  "🍪",
-  "☕",
-  "🍵",
-  "🧃",
-  "🥤",
-  "🧋",
-  "🍺",
-  "🥂",
-];
-
-const marqueeFood = [
+const marqueeFood1 = [
   "/assets/images/stickers/1.png",
   "/assets/images/stickers/2.png",
   "/assets/images/stickers/3.png",
@@ -70,10 +14,36 @@ const marqueeFood = [
   "/assets/images/stickers/10.png",
   "/assets/images/stickers/11.png",
   "/assets/images/stickers/12.png",
-  // "/assets/images/stickers/13.png",
-  // "/assets/images/stickers/14.png",
-  // "/assets/images/stickers/15.png",
-  // "/assets/images/stickers/16.png",
+];
+
+const marqueeFood2 = [
+  "/assets/images/stickers/13.png",
+  "/assets/images/stickers/14.png",
+  "/assets/images/stickers/15.png",
+  "/assets/images/stickers/16.png",
+  "/assets/images/stickers/17.png",
+  "/assets/images/stickers/18.png",
+  "/assets/images/stickers/19.png",
+  "/assets/images/stickers/20.png",
+  "/assets/images/stickers/21.png",
+  "/assets/images/stickers/22.png",
+  "/assets/images/stickers/23.png",
+  "/assets/images/stickers/24.png",
+];
+
+const marqueeFood3 = [
+  "/assets/images/stickers/25.png",
+  "/assets/images/stickers/26.png",
+  "/assets/images/stickers/27.png",
+  "/assets/images/stickers/28.png",
+  "/assets/images/stickers/29.png",
+  "/assets/images/stickers/30.png",
+  "/assets/images/stickers/31.png",
+  "/assets/images/stickers/32.png",
+  "/assets/images/stickers/33.png",
+  "/assets/images/stickers/34.png",
+  "/assets/images/stickers/35.png",
+  "/assets/images/stickers/36.png",
 ];
 
 export default function FoodGallery() {
@@ -89,17 +59,12 @@ export default function FoodGallery() {
       </div>
 
       <div className="food-gallery-container">
-        <h2 className="food-title">Ăn uống cùng bọn mình</h2>
+        <p className="food-title">Tăng cân cùng chúng mình</p>
 
         {/* Marquee 1 */}
         <div className="marquee-wrapper marquee-left">
           <div className="marquee-content">
-            {/* {marquee1Items.map((food, idx) => (
-              <span key={`m1-${idx}`} className="food-sticker">
-                {food}
-              </span>
-            ))} */}
-            {marqueeFood.map((food, idx) => (
+            {marqueeFood1.map((food, idx) => (
               <img
                 key={`m1-food-${idx}`}
                 src={food}
@@ -107,7 +72,7 @@ export default function FoodGallery() {
                 className="food-sticker"
               />
             ))}
-            {marqueeFood.map((food, idx) => (
+            {marqueeFood1.map((food, idx) => (
               <img
                 key={`m1-food-dup-${idx}`}
                 src={food}
@@ -115,11 +80,6 @@ export default function FoodGallery() {
                 className="food-sticker"
               />
             ))}
-            {/* {marquee1Items.map((food, idx) => (
-              <span key={`m1-dup-${idx}`} className="food-sticker">
-                {food}
-              </span>
-            ))} */}
           </div>
         </div>
 
@@ -161,15 +121,21 @@ export default function FoodGallery() {
         {/* Marquee 2 (Reverse) */}
         <div className="marquee-wrapper marquee-right">
           <div className="marquee-content">
-            {marquee2Items.map((food, idx) => (
-              <span key={`m2-${idx}`} className="food-sticker">
-                {food}
-              </span>
+            {marqueeFood2.map((food, idx) => (
+              <img
+                key={`m2-food-${idx}`}
+                src={food}
+                alt="Food"
+                className="food-sticker"
+              />
             ))}
-            {marquee2Items.map((food, idx) => (
-              <span key={`m2-dup-${idx}`} className="food-sticker">
-                {food}
-              </span>
+            {marqueeFood2.map((food, idx) => (
+              <img
+                key={`m2-food-dup-${idx}`}
+                src={food}
+                alt="Food"
+                className="food-sticker"
+              />
             ))}
           </div>
         </div>
@@ -177,65 +143,52 @@ export default function FoodGallery() {
         {/* Images Row 2 */}
         <div className="food-images-row">
           <div className="food-image-card transparent">
-            <img src="/img/food-couple1.png" alt="Cùng nhau ăn uống" />
-            <div className="food-img-placeholder">
-              <span className="food-emoji">🍽️</span>
-              <p>Together 1</p>
-            </div>
+            <img
+              src="/assets/images/stickers/quyen-6-mui.png"
+              alt="Quyền 6 múi"
+              style={{
+                borderRadius: "10%",
+              }}
+            />
           </div>
 
           <div className="cute-arrow-wrapper">
-            <svg
+            <img
+              src="/assets/images/stickers/arrow.png"
+              alt="Mũi tên"
               className="cute-arrow"
-              viewBox="0 0 100 100"
-              width="80"
-              height="80"
-            >
-              <defs>
-                <marker
-                  id="arrowhead2"
-                  markerWidth="10"
-                  markerHeight="10"
-                  refX="9"
-                  refY="3"
-                  orient="auto"
-                >
-                  <polygon points="0 0, 10 3, 0 6" fill="var(--bin-primary)" />
-                </marker>
-              </defs>
-              <path
-                d="M 20 50 Q 50 20, 80 50"
-                stroke="var(--bin-primary)"
-                strokeWidth="4"
-                fill="none"
-                strokeLinecap="round"
-                markerEnd="url(#arrowhead2)"
-              />
-            </svg>
-            <span className="arrow-heart">💖</span>
+            />
           </div>
 
           <div className="food-image-card transparent">
-            <img src="/img/food-couple2.png" alt="Khoảnh khắc ăn uống" />
-            <div className="food-img-placeholder">
-              <span className="food-emoji">🥰</span>
-              <p>Together 2</p>
-            </div>
+            <img
+              src="/assets/images/stickers/quyen-bell.png"
+              alt="Quyền Bell"
+              style={{
+                borderRadius: "10%",
+              }}
+            />
           </div>
         </div>
 
         {/* Marquee 3 */}
         <div className="marquee-wrapper marquee-left">
           <div className="marquee-content">
-            {marquee3Items.map((food, idx) => (
-              <span key={`m3-${idx}`} className="food-sticker">
-                {food}
-              </span>
+            {marqueeFood3.map((food, idx) => (
+              <img
+                key={`m3-food-${idx}`}
+                src={food}
+                alt="Food"
+                className="food-sticker"
+              />
             ))}
-            {marquee3Items.map((food, idx) => (
-              <span key={`m3-dup-${idx}`} className="food-sticker">
-                {food}
-              </span>
+            {marqueeFood3.map((food, idx) => (
+              <img
+                key={`m3-food-dup-${idx}`}
+                src={food}
+                alt="Food"
+                className="food-sticker"
+              />
             ))}
           </div>
         </div>
