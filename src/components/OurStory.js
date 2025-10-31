@@ -6,42 +6,42 @@ const storyItems = [
     id: 1,
     title: "Ngày nhập ngũ",
     description: "Quyền lên đường đi lính - Khởi đầu hành trình mới",
-    media: "/assets/images/story/img/img-1.jpg",
+    media: "/assets/images/story/img/1.jpg",
     type: "image",
   },
   {
     id: 2,
     title: "Giai đoạn khó khăn",
     description: "Vất vả, bỡ ngỡ nhưng kiên cường vượt qua",
-    media: "/img/challenge.jpg",
+    media: "/assets/images/story/img/2.jpg",
     type: "image",
   },
   {
     id: 3,
     title: "Ngày em đến",
     description: "Diệu Anh xuất hiện như thiên thần cứu rỗi",
-    media: "/img/angel.jpg",
+    media: "/assets/images/story/img/3.jpg",
     type: "image",
   },
   {
     id: 4,
     title: "Tìm hiểu",
     description: "Những ngày cà phê, workdate ngọt ngào",
-    media: "/vid/dating.mp4",
+    media: "/assets/images/story/vid/video.mp4",
     type: "video",
   },
   {
     id: 5,
     title: "Lời tỏ tình",
     description: "27/05/2025 - Ngày định mệnh của đôi ta",
-    media: "/img/confession.jpg",
+    media: "/assets/images/story/img/4.jpg",
     type: "image",
   },
   {
     id: 6,
     title: "Viết tiếp câu chuyện",
     description: "Tiếp tục yêu thương và tạo thêm kỷ niệm",
-    media: "/img/future.jpg",
+    media: "/assets/images/story/img/5.jpg",
     type: "image",
   },
 ];
@@ -49,16 +49,31 @@ const storyItems = [
 export default function OurStory() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlay, setIsAutoPlay] = useState(true);
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+  const [isHoveringSlide, setIsHoveringSlide] = useState(false); // NEW
   const intervalRef = useRef(null);
+  const videoRef = useRef(null);
 
   const totalItems = storyItems.length;
+  const currentItem = storyItems[currentIndex];
 
-  // Auto-rotate functionality
+  // Auto-rotate functionality với logic cho video và hover
   useEffect(() => {
-    if (isAutoPlay) {
+    // Clear existing interval
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+    }
+
+    // Chỉ start autoplay nếu:
+    // 1. AutoPlay enabled
+    // 2. Video KHÔNG đang phát
+    // 3. User KHÔNG hover vào slide
+    if (isAutoPlay && !isVideoPlaying && !isHoveringSlide) {
+      const delay = currentItem.type === "video" ? 8000 : 4000;
+
       intervalRef.current = setInterval(() => {
         handleNext();
-      }, 4000);
+      }, delay);
     }
 
     return () => {
@@ -66,14 +81,56 @@ export default function OurStory() {
         clearInterval(intervalRef.current);
       }
     };
-  }, [isAutoPlay, currentIndex]);
+  }, [
+    isAutoPlay,
+    currentIndex,
+    isVideoPlaying,
+    isHoveringSlide,
+    currentItem.type,
+  ]);
+
+  // Track video play/pause events
+  useEffect(() => {
+    const videoElement = videoRef.current;
+
+    if (videoElement && currentItem.type === "video") {
+      const handlePlay = () => {
+        setIsVideoPlaying(true);
+      };
+
+      const handlePause = () => {
+        setIsVideoPlaying(false);
+      };
+
+      const handleEnded = () => {
+        setIsVideoPlaying(false);
+        if (isAutoPlay && !isHoveringSlide) {
+          setTimeout(() => {
+            handleNext();
+          }, 1000);
+        }
+      };
+
+      videoElement.addEventListener("play", handlePlay);
+      videoElement.addEventListener("pause", handlePause);
+      videoElement.addEventListener("ended", handleEnded);
+
+      return () => {
+        videoElement.removeEventListener("play", handlePlay);
+        videoElement.removeEventListener("pause", handlePause);
+        videoElement.removeEventListener("ended", handleEnded);
+      };
+    }
+  }, [currentIndex, currentItem.type, isAutoPlay, isHoveringSlide]);
 
   const handleNext = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % totalItems);
+    setIsVideoPlaying(false);
   };
 
   const handlePrev = () => {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + totalItems) % totalItems);
+    setIsVideoPlaying(false);
   };
 
   const toggleAutoPlay = () => {
@@ -83,21 +140,27 @@ export default function OurStory() {
   const handleSlideClick = (index) => {
     const diff = index - currentIndex;
     if (diff === 1 || diff === -(totalItems - 1)) {
-      // Click on next slide
       handleNext();
     } else if (diff === -1 || diff === totalItems - 1) {
-      // Click on previous slide
       handlePrev();
     }
   };
 
-  // Calculate vertical position for carousel items
+  // NEW: Handle hover on current slide
+  const handleSlideMouseEnter = () => {
+    setIsHoveringSlide(true);
+  };
+
+  const handleSlideMouseLeave = () => {
+    setIsHoveringSlide(false);
+  };
+
   const getItemStyle = (index) => {
     const diff = index - currentIndex;
-    const verticalOffset = diff * 20; // Giảm từ 120 xuống 80 để slides gần nhau hơn
+    const verticalOffset = diff * 20;
 
     const isCurrent = diff === 0;
-    const scale = isCurrent ? 1 : 0.75; // Giảm từ 0.85 xuống 0.75 để current nổi bật hơn
+    const scale = isCurrent ? 1 : 0.75;
     const opacity = Math.abs(diff) <= 1 ? 1 : 0;
 
     return {
@@ -125,6 +188,19 @@ export default function OurStory() {
       <div className="story-container-centered">
         <h2 className="story-title">Câu chuyện của chúng mình</h2>
 
+        {/* Status Indicators */}
+        {currentItem.type === "video" && isVideoPlaying && (
+          <div className="video-playing-indicator">
+            🎬 Video đang phát - Carousel tạm dừng
+          </div>
+        )}
+
+        {isHoveringSlide && !isVideoPlaying && (
+          <div className="hover-pause-indicator">
+            🖼️ Carousel tạm dừng - Ngắm ảnh thôi nào!
+          </div>
+        )}
+
         {/* Carousel Container */}
         <div className="vertical-carousel-wrapper">
           {/* Up Arrow */}
@@ -151,9 +227,17 @@ export default function OurStory() {
                   key={item.id}
                   className={`carousel-slide ${
                     index === currentIndex ? "current" : ""
+                  } ${
+                    index === currentIndex && isHoveringSlide ? "hovering" : ""
                   }`}
                   style={getItemStyle(index)}
                   onClick={() => handleSlideClick(index)}
+                  onMouseEnter={
+                    index === currentIndex ? handleSlideMouseEnter : undefined
+                  }
+                  onMouseLeave={
+                    index === currentIndex ? handleSlideMouseLeave : undefined
+                  }
                 >
                   <div className="slide-content">
                     {item.type === "image" ? (
@@ -168,16 +252,26 @@ export default function OurStory() {
                         </div>
                       </>
                     ) : (
-                      <video
-                        src={item.media}
-                        className="slide-media"
-                        controls={index === currentIndex}
-                        muted
-                        loop
-                      />
+                      <div className="video-wrapper">
+                        <video
+                          ref={index === currentIndex ? videoRef : null}
+                          src={item.media}
+                          className="slide-media"
+                          controls={index === currentIndex}
+                          muted
+                          loop
+                          autoPlay={index === currentIndex}
+                        />
+                        {index === currentIndex && !isVideoPlaying && (
+                          <div className="video-play-hint">
+                            <div className="play-icon-hint">▶️</div>
+                            <p>Click để phát video</p>
+                          </div>
+                        )}
+                      </div>
                     )}
 
-                    {/* Description Overlay - Right Corner */}
+                    {/* Description Overlay - Fades out on hover */}
                     <div className="slide-description">
                       <h3>{item.title}</h3>
                       <p>{item.description}</p>

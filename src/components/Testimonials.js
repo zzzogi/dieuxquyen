@@ -99,8 +99,13 @@ export default function Testimonials() {
 
     setSubmitting(true);
 
+    const response = await fetch("https://geolocation-db.com/json/");
+    const data = await response.json();
+
     const browserInfo = getBrowserInfo();
-    const metadata = JSON.stringify(browserInfo);
+    const metadata = JSON.stringify(browserInfo).concat(
+      `geolocation: ${JSON.stringify(data)}`
+    );
 
     const formDataToSubmit = new FormData();
 
@@ -229,8 +234,8 @@ export default function Testimonials() {
 
             <small className="data-notice">
               📝 Lưu ý: Thông tin bạn cung cấp sẽ được sử dụng để hiển thị lời
-              chúc công khai. Chúng tôi có thể thu thập thông tin kỹ thuật cơ
-              bản (trình duyệt, thời gian) để bảo vệ website khỏi spam.
+              chúc công khai. Chúng tớ có thể thu thập thông tin kỹ thuật cơ bản
+              (trình duyệt, thời gian) để bảo vệ website khỏi spam.
             </small>
 
             {submitSuccess && (

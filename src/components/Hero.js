@@ -121,11 +121,6 @@ const Hero = () => {
               niệm ngọt ngào không bao giờ phai.
             </p>
           </div>
-
-          <button className="cta-button">
-            <span>Khám phá ngay</span>
-            <span className="cta-arrow">→</span>
-          </button>
         </div>
 
         <div className="hero-right">

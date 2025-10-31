@@ -34,7 +34,7 @@ const Header = () => {
           <button onClick={() => scrollToSection("memories")}>Memories</button>
         </nav>
         <div className="header-buttons">
-          <button className="btn-login">Khám phá</button>
+          <button className="btn-login">More</button>
         </div>
       </div>
     </header>
