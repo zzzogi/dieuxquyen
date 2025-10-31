@@ -40,8 +40,6 @@ export const handler = async function (event, context) {
       SHEET_NAME
     )}?key=${GOOGLE_API_KEY}`;
 
-    console.log("Fetching from Google Sheets..."); // Netlify logs
-
     const response = await fetch(url);
 
     if (!response.ok) {
@@ -69,10 +67,7 @@ export const handler = async function (event, context) {
         timestamp: row[0] || "",
         name: row[2] || "Anonymous",
         message: row[3] || "",
-        review: row[5] || "",
       }));
-
-    console.log(`Successfully fetched ${testimonials.length} testimonials`);
 
     return {
       statusCode: 200,

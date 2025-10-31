@@ -253,9 +253,9 @@ export default function Testimonials() {
           )}
         </div>
 
-        {/* <button onClick={fetchTestimonials} className="refresh-btn">
+        <button onClick={fetchTestimonials} className="refresh-btn">
           Làm mới 🔄
-        </button> */}
+        </button>
       </div>
     </section>
   );
