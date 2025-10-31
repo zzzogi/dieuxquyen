@@ -6,9 +6,6 @@ import "./Testimonials.css";
 const GOOGLE_FORM_ACTION = `https://docs.google.com/forms/d/${process.env.REACT_APP_GOOGLE_FORM_ID}/formResponse`;
 const ENTRY_NAME = process.env.REACT_APP_ENTRY_NAME;
 const ENTRY_MESSAGE = process.env.REACT_APP_ENTRY_MESSAGE;
-
-const GOOGLE_SHEET_ID = process.env.REACT_APP_GOOGLE_SHEET_ID;
-const GOOGLE_API_KEY = process.env.REACT_APP_GOOGLE_API_KEY;
 const ENTRY_METADATA = process.env.REACT_APP_ENTRY_METADATA;
 
 export default function Testimonials() {
@@ -41,40 +38,25 @@ export default function Testimonials() {
     fetchTestimonials();
   }, []);
 
-  // Frontend filter - User vẫn có thể thấy raw data nếu inspect network
+  // Fetch từ Netlify Function thay vì direct API
   const fetchTestimonials = async () => {
     setLoading(true);
     setError(null);
 
     try {
-      const encodedSheetName = encodeURIComponent("Sheet1");
-      const url = `https://sheets.googleapis.com/v4/spreadsheets/${GOOGLE_SHEET_ID}/values/${encodedSheetName}?key=${GOOGLE_API_KEY}`;
+      // Call Netlify Function
+      const response = await fetch("/.netlify/functions/testimonials");
 
-      const response = await fetch(url);
       if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error.message || "Failed to fetch");
+        throw new Error("Failed to fetch testimonials");
       }
 
       const data = await response.json();
 
-      if (data.values && data.values.length > 1) {
-        const testimonialData = data.values
-          .slice(1)
-          .filter((row) => {
-            const review = row[5]; // Column D - Review status
-            return review && review === "Approved"; // Chỉ lấy approved
-          })
-          .map((row) => ({
-            timestamp: row[0] || "",
-            name: row[2] || "Anonymous",
-            message: row[3] || "",
-            review: row[5] || "",
-          }));
-
-        setTestimonials(testimonialData.reverse());
+      if (data.success) {
+        setTestimonials(data.testimonials);
       } else {
-        setTestimonials([]);
+        throw new Error(data.error || "Unknown error");
       }
 
       setLoading(false);
