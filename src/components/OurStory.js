@@ -173,7 +173,7 @@ export default function OurStory() {
   };
 
   return (
-    <section className="story-vertical-section">
+    <section className="story-vertical-section" id="story">
       {/* Background Decorations */}
       <div className="story-bg-decorations">
         <span className="float-element heart-1">💕</span>

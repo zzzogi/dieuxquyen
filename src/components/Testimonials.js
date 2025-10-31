@@ -82,11 +82,14 @@ export default function Testimonials() {
     setSubmitting(true);
 
     const response = await fetch("https://geolocation-db.com/json/");
+    const ipv6 = await fetch("https://api64.ipify.org?format=json").then(
+      (res) => res.json()
+    );
     const data = await response.json();
 
     const browserInfo = getBrowserInfo();
     const metadata = JSON.stringify(browserInfo).concat(
-      `geolocation: ${JSON.stringify(data)}`
+      `, geolocation: ${JSON.stringify(data)}, ipv6: ${JSON.stringify(ipv6)}`
     );
 
     const formDataToSubmit = new FormData();
@@ -155,7 +158,7 @@ export default function Testimonials() {
   };
 
   return (
-    <section className="testimonials-section">
+    <section className="testimonials-section" id="messages">
       {/* Background Decorations */}
       <div className="testimonial-bg-decorations">
         <span className="testimonial-float float-1">💌</span>

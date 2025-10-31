@@ -48,7 +48,7 @@ const marqueeFood3 = [
 
 export default function FoodGallery() {
   return (
-    <section className="food-gallery-section">
+    <section className="food-gallery-section" id="food">
       {/* Background Elements */}
       <div className="food-bg-decorations">
         <span className="food-float float-1">🍕</span>

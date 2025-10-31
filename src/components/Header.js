@@ -32,9 +32,15 @@ const Header = () => {
           <button onClick={() => scrollToSection("about")}>About Us</button>
           <button onClick={() => scrollToSection("story")}>Our Story</button>
           <button onClick={() => scrollToSection("memories")}>Memories</button>
+          <button onClick={() => scrollToSection("food")}>Food</button>
         </nav>
         <div className="header-buttons">
-          <button className="btn-login">More</button>
+          <button
+            className="btn-login"
+            onClick={() => scrollToSection("messages")}
+          >
+            Send a message
+          </button>
         </div>
       </div>
     </header>

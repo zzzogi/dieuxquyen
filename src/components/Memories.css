@@ -625,21 +625,19 @@
 .lightbox-date {
   font-size: 28px;
   color: var(--dieu-primary);
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   font-weight: 600;
 }
 
 .lightbox-title {
   font-size: 36px;
   color: var(--bin-primary);
-  margin-bottom: 20px;
-  line-height: 1.3;
+  margin-bottom: 15x;
 }
 
 .lightbox-description {
   font-size: 22px;
   color: #555;
-  line-height: 1.7;
   margin: 0;
 }
 
@@ -654,15 +652,15 @@
   }
 
   .lightbox-date {
-    font-size: 22px;
+    font-size: 24px;
   }
 
   .lightbox-title {
-    font-size: 28px;
+    font-size: 48px;
   }
 
   .lightbox-description {
-    font-size: 18px;
+    font-size: 32px;
   }
 
   .lightbox-close {
@@ -760,7 +758,7 @@
 }
 
 .grid-caption .handwriting {
-  font-size: 20px;
+  font-size: 32px;
   color: #333;
   margin: 0;
 }
