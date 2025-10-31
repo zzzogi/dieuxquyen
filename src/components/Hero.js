@@ -4,7 +4,7 @@ import "./Hero.css";
 const Hero = () => {
   const [hearts, setHearts] = useState([]);
   const [daysCount, setDaysCount] = useState(0);
-  const [momentsCount, setMomentsCount] = useState(0);
+  const [, setMomentsCount] = useState(0);
   const [hasAnimated, setHasAnimated] = useState(false);
   const heroRef = useRef(null);
 

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import "./OurStory.css";
 
 const storyItems = [
@@ -57,6 +57,11 @@ export default function OurStory() {
   const totalItems = storyItems.length;
   const currentItem = storyItems[currentIndex];
 
+  const handleNext = useCallback(() => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % totalItems);
+    setIsVideoPlaying(false);
+  }, [totalItems]);
+
   // Auto-rotate functionality với logic cho video và hover
   useEffect(() => {
     // Clear existing interval
@@ -87,6 +92,7 @@ export default function OurStory() {
     isVideoPlaying,
     isHoveringSlide,
     currentItem.type,
+    handleNext,
   ]);
 
   // Track video play/pause events
@@ -121,12 +127,7 @@ export default function OurStory() {
         videoElement.removeEventListener("ended", handleEnded);
       };
     }
-  }, [currentIndex, currentItem.type, isAutoPlay, isHoveringSlide]);
-
-  const handleNext = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % totalItems);
-    setIsVideoPlaying(false);
-  };
+  }, [currentIndex, currentItem.type, isAutoPlay, isHoveringSlide, handleNext]);
 
   const handlePrev = () => {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + totalItems) % totalItems);

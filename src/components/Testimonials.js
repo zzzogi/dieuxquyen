@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
+import { containsBadWords } from "../utils/badWords";
 import "./Testimonials.css";
-import { containsBadWords, findBadWords } from "../utils/badWords";
 
 // Config
 const GOOGLE_FORM_ACTION = `https://docs.google.com/forms/d/${process.env.REACT_APP_GOOGLE_FORM_ID}/formResponse`;
